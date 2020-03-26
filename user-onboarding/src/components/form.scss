@@ -6,6 +6,7 @@
     justify-content: space-around;
     padding: 2% 0;
     text-align: start;
+    height: 70vh;
     form{
         input{
             width: 100%;
@@ -17,6 +18,10 @@
         }
         .checkbox{
             width: auto;
+        }
+        .error {
+            color: red;
+            font-size: 1rem;
         }
     }
 }

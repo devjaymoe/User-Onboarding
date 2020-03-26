@@ -6,17 +6,17 @@ import './form.scss'
 const formSchema = yup.object().shape({
     name: yup
       .string()
-      .required("Name is a required field"),
+      .required("*Name is a required field"),
     email: yup
       .string()
       .email()
-      .required("Must include an email"),
+      .required("*Must include an email"),
     password: yup
       .string()
-      .required('Must include a password'),
+      .required('*Must include a password'),
     terms: yup
       .boolean()
-      .oneOf([true], "please agree to terms of use"),
+      .oneOf([true], "*Please agree to terms of use"),
 });
 
 function Form() {
@@ -165,11 +165,11 @@ function Form() {
                     onChange={onInputChange}
                     className='checkbox'
                 />
-                Terms and Conditions
+                <span>Terms and Conditions</span>
             </label>
 
             <br />
-            <pre>{JSON.stringify(post, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
             <button disabled={buttonDisabled}>Submit</button>
         </form>
             <div>
