@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import './form.scss'
 
 const formSchema = yup.object().shape({
     name: yup
@@ -97,7 +98,7 @@ function Form() {
             .post('https://reqres.in/api/users', formValues)
             .then(response =>{
                 setPost(response.data)
-                
+                console.log(response)
                 console.log('success', post)
                 // reset form values
                 setFormValues({
@@ -112,27 +113,29 @@ function Form() {
             });
     }
     return  (
-        <div>
+        <div className="formContainer">
         <form onSubmit={onFormSubmit}>
+            <div>Create a New Account</div>
+            <br/>
             <label htmlFor="name" className="name"> 
-                Name: 
                 <input
                     onChange={onInputChange}
                     value={formValues.name}
                     name='name'
                     type='text'
+                    placeholder='User Name'
                 />
                 {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
             </label>
 
             <br />
             <label htmlFor="email" className="email"> 
-                Email: 
                 <input
                     onChange={onInputChange}
                     value={formValues.email}
                     name='email'
                     type='text'
+                    placeholder='Email'
                 />
                 {errors.email.length > 0 ? (
                     <p className="error"> {errors.email}</p>
@@ -141,12 +144,12 @@ function Form() {
 
             <br />
             <label htmlFor="password" className="password"> 
-                Password: 
                 <input
                     onChange={onInputChange}
                     value={formValues.password}
                     name='password'
                     type='text'
+                    placeholder='Password'
                 />
                 {errors.password.length > 0 ? (
                     <p className="error"> {errors.password}</p>
@@ -160,6 +163,7 @@ function Form() {
                     name="terms"
                     checked={formValues.terms}
                     onChange={onInputChange}
+                    className='checkbox'
                 />
                 Terms and Conditions
             </label>
@@ -168,14 +172,16 @@ function Form() {
             <pre>{JSON.stringify(post, null, 2)}</pre>
             <button disabled={buttonDisabled}>Submit</button>
         </form>
-        <h3>List of Users:</h3>
-        {
-          users.map((user, index) => (
-            <div key={index}>
-              {user.name} {user.email} {user.terms}
+            <div>
+                <h3>List of Users:</h3>
+                {
+                users.map((user, index) => (
+                    <div key={index} className='users'>
+                    {user.name} {user.email} {user.terms}
+                    </div>
+                ))
+                }
             </div>
-          ))
-        }
         </div>
     );
 }
