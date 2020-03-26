@@ -1,0 +1,27 @@
+.formContainer {
+    display:flex;
+    background-color: #ffffff;
+    color: black;
+    width: 100%;
+    justify-content: space-around;
+    padding: 2% 0;
+    text-align: start;
+    height: 70vh;
+    form{
+        input{
+            width: 100%;
+            padding: 2%;
+            font-family: inherit;
+            border-radius: 5px;
+            border: 1px solid #ccd0d5;
+            margin: 2% 0;
+        }
+        .checkbox{
+            width: auto;
+        }
+        .error {
+            color: red;
+            font-size: 1rem;
+        }
+    }
+}
